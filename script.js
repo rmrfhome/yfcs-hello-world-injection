@@ -5,5 +5,11 @@ function updateGreeting() {
     var colorInputElement = document.getElementById('colorInput');
     var colorName = colorInputElement.value;
     greetingContainerElement.innerHTML = 
-        "<p style='color: " + colorName + "'>Hello, " + name + "!</p>";
+        "<p style='color: " + sanitize(colorName) + "'>Hello, " + sanitize(name) + "!</p>";
+}
+
+function sanitize(str) {
+    str = str.replace("<", "&lt;")
+    str = str.replace(">", "&gt;")
+    return str;
 }
